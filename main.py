@@ -1,5 +1,4 @@
 import os
-import time
 from packages.config import Config
 from packages.make_struct import MakeStruct
 from packages.logger import Logger
@@ -20,6 +19,15 @@ config_env = Config().getEnv()
 # Получаем нужные пути к папкам
 dir_logs = Dirs().get('logs')
 
+# Получаем нужные пути к файлам
+log_file = os.path.join(dir_logs, config_app['log_file'])
+
+# Удаляем ненужные файлы
+del_files = [
+    log_file,
+]
+Remover().remove_files(del_files)
+
 # Создаём переменные для программы
 if config_env['login']:
     login = config_env['login']
@@ -31,15 +39,6 @@ if config_env['password']:
 else:
     password = config_app['password']
 
-# Получаем нужные пути к файлам
-log_file = os.path.join(dir_logs, config_app['log_file'])
-
-# Удаляем ненужные файлы
-del_files = [
-    log_file,
-]
-Remover().remove_files(del_files)
-
 if(__name__ == "__main__"):
     # Создаём структуру папок для работы
     MakeStruct(config_struct).run()
@@ -49,9 +48,6 @@ if(__name__ == "__main__"):
 
     # Логируем
     logger.save_show('Программа запущена!!!')
-
-    # ТУТ ВЫПОЛНЯЕТСЯ ПРОГРАММА
-
 
     # ТУТ ВЫПОЛНЯЕТСЯ ПРОГРАММА
 
