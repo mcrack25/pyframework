@@ -18,14 +18,22 @@ program_name = 'openSite v1.0'
 # Получаем все конфиги
 config_struct = Config('struct').getAll()
 config_app = Config('app').getAll()
+config_env = Config().getEnv()
 
 # Получаем нужные пути к папкам
 dir_logs = Dirs().get('logs')
 dir_drivers = Dirs().get('drivers')
 
 # Создаём переменные для программы
-login = config_app['login']
-password = config_app['password']
+if config_env['login']:
+    login = config_env['login']
+else:
+    login = config_app['login']
+
+if config_env['password']:
+    password = config_env['password']
+else:
+    password = config_app['password']
 
 # Получаем нужные пути к файлам
 log_file = os.path.join(dir_logs, config_app['log_file'])
