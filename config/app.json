@@ -1,0 +1,9 @@
+{
+  "url": "http://asp-socportal.dagmintrud.ru/socportal",
+  "uri_list": "/ATN/list.aspx",
+  "login": "admin",
+  "password": "admin",
+  "log_file": "log.txt",
+  "browser": "chrome",
+  "driver_file": "chromedriver_91"
+}

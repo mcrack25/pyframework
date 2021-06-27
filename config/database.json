@@ -1,0 +1,8 @@
+{
+  "dbType": "sqlite",
+  "dbHost": "localhost",
+  "dbName": "cleandb.sqlite",
+  "dbUser": "abc",
+  "dbPass": "abc",
+  "dbPort": "5432"
+}
