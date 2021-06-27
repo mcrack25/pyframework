@@ -1,26 +1,47 @@
 import os
 from peewee import *
-from packages.config import Config
-from packages.dirs import Dirs
 
-dbType = Config('database').get('dbType')
-db_user = Config('database').get('dbUser')
-db_password = Config('database').get('dbPass')
-db_name = Config('database').get('dbName')
-db_host = Config('database').get('dbHost')
-db_port = int(Config('database').get('dbPort'))
+class Connection:
+    db = set()
+    db_type = ''
+    db_sqlite_path = ''
+    db_user = ''
+    db_password = ''
+    db_name = ''
+    db_host = ''
+    db_port = ''
 
-if (dbType == 'mysql'):
-    db = MySQLDatabase(db_name, user=db_user, password=db_password,host=db_host, port=db_port)
+    def __init__(self, config):
+        params = [
+            'db_type',
+            'db_sqlite_path',
+            'db_user',
+            'db_password',
+            'db_name',
+            'db_host',
+            'db_port'
+        ]
+        self.set_or_null(config, params)
 
-elif(dbType == 'postgres'):
-    db = PostgresqlDatabase(db_name, user=db_user, password=db_password, host=db_host, port=db_port)
+    def getDb(self):
+        self.select_db()
+        return self.db
 
-elif(dbType == 'sqlite'):
-    dirDb = Dirs().get('databases')
-    fileDb = os.path.join(dirDb, db_name)
-    db = SqliteDatabase(fileDb)
+    def set_or_null(self, config, params):
+        for param in params:
+            try:
+                if config[param]:
+                    setattr(self, param, config[param])
+            except:
+                pass
 
-else:
-    print('Ошибка!!! Не верный тип базы данных')
-    exit()
+    def select_db(self):
+        if (self.db_type == 'mysql'):
+            self.db = MySQLDatabase(self.db_name, user=self.db_user, password=self.db_password,host=self.db_host, port=self.db_port)
+        elif(self.db_type == 'postgres'):
+            self.db = PostgresqlDatabase(self.db_name, user=self.db_user, password=self.db_password, host=self.db_host, port=self.db_port)
+        elif(self.db_type == 'sqlite'):
+            self.db = SqliteDatabase(self.db_sqlite_path)
+        else:
+            print('Ошибка!!! Не верный тип базы данных')
+            exit()

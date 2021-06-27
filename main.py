@@ -4,6 +4,7 @@ from packages.make_struct import MakeStruct
 from packages.logger import Logger
 from packages.dirs import Dirs
 from packages.remover import Remover
+from packages.connection import Connection
 
 # ПОДКЛЮЧАЕМ ВСЕ БИБЛИОТЕКИ ПРОЕКТА
 # .......................
@@ -14,6 +15,7 @@ program_name = 'ProgramName v1.0'
 # ПОЛУЧАЕМ ВСЕ КОНФИГИ
 config_struct = Config('struct').getAll()
 config_app = Config('app').getAll()
+config_db = Config('database').getAll()
 config_env = Config().getEnv()
 
 # ПОЛУЧАЕМ ВСЕ ПУТИ К ПАПКАМ
@@ -49,8 +51,7 @@ if(__name__ == "__main__"):
     else:
         password = config_app['password']
 
-
-
+    db = Connection(config_db).getDb()
 
 
 
