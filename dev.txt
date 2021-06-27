@@ -1,0 +1,8 @@
+MAKE REQUIREMENTS:
+pip freeze > requirements.txt
+
+RUN REQUIREMENTS:
+pip install -r requirements.txt
+
+COMPILE:
+pyinstaller --onefile --icon=icon.ico main.py
