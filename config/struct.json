@@ -1,7 +1,5 @@
 {
   "storage": "storage",
   "logs": "storage.logs",
-  "xlsx": "storage.xlsx",
-  "data": "data",
-  "drivers": "data.drivers"
+  "data": "data"
 }

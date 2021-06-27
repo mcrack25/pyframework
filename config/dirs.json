@@ -5,6 +5,5 @@
   "data": "data",
   "drivers": "data.drivers",
   "storage": "storage",
-  "logs": "storage.logs",
-  "xlsx": "storage.xlsx"
+  "logs": "storage.logs"
 }
