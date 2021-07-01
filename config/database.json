@@ -1,8 +1,7 @@
 {
   "db_type": "sqlite",
-  "db_sqlite_path": "abc.sqlite",
   "db_host": "localhost",
-  "db_name": "cleandb.sqlite",
+  "db_name": "abc.sqlite",
   "db_user": "db_user",
   "db_password": "db_password",
   "db_port": "5432"

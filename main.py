@@ -4,7 +4,6 @@ from packages.make_struct import MakeStruct
 from packages.logger import Logger
 from packages.dirs import Dirs
 from packages.remover import Remover
-from packages.connection import Connection
 
 # ПОДКЛЮЧАЕМ ВСЕ БИБЛИОТЕКИ ПРОЕКТА
 # .......................
@@ -13,10 +12,8 @@ from packages.connection import Connection
 program_name = 'ProgramName v1.0'
 
 # ПОЛУЧАЕМ ВСЕ КОНФИГИ
-config_struct = Config('struct').getAll()
-config_app = Config('app').getAll()
-config_db = Config('database').getAll()
-config_env = Config().getEnv()
+config_struct = Config('struct').getData()
+config_app = Config('app').getData()
 
 # ПОЛУЧАЕМ ВСЕ ПУТИ К ПАПКАМ
 dir_logs = Dirs().get('logs')
@@ -39,23 +36,14 @@ if(__name__ == "__main__"):
 
     # Логируем запуск
     logger.save_show('Программа запущена!!!')
-    # ****************** ТУТ ВЫПОЛНЯЕТСЯ ПРОГРАММА
 
-    # СОЗДАЁМ ПЕРЕМЕННЫЕ ДЛЯ ПРОГРАММЫ С ЗАЩИЩЁННЫМИ ДЛЯ РАЗРАБОТКИ ДАННЫМИ
-    if config_env['login']:
-        login = config_env['login']
-    else:
-        login = config_app['login']
-    if config_env['password']:
-        password = config_env['password']
-    else:
-        password = config_app['password']
-
-    db = Connection(config_db).getDb()
+    # ****************** ТУТ ВЫПОЛНЯЕТСЯ ПРОГРАММА ****************** #
 
 
 
-    # ****************** ТУТ ВЫПОЛНЯЕТСЯ ПРОГРАММА
+    # ****************** ТУТ ВЫПОЛНЯЕТСЯ ПРОГРАММА ****************** #
+
+    # Логируем завершение программы
     logger.save_show('Программа выполнена!!!')
     print('')
     print('***')
