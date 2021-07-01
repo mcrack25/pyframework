@@ -22,10 +22,9 @@ dir_logs = Dirs().get('logs')
 log_file = os.path.join(dir_logs, config_app['log_file'])
 
 # УДАЛЯЕМ НЕНУЖНЫЕ, СТАРЫЕ ФАЙЛЫ
-del_files = [
+Remover().remove_files([
     log_file,
-]
-Remover().remove_files(del_files)
+])
 
 if(__name__ == "__main__"):
     # Создаём структуру папок для работы
