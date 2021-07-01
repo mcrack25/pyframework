@@ -26,17 +26,22 @@ Remover().remove_files([
     log_file,
 ])
 
+# Создаём структуру папок для работы
+MakeStruct(config_struct).run()
+
+# Создаём объект логера
+logger = Logger(log_file)
+
 if(__name__ == "__main__"):
-    # Создаём структуру папок для работы
-    MakeStruct(config_struct).run()
-
-    # Создаём объект логера
-    logger = Logger(log_file)
-
     # Логируем запуск
     logger.save_show('Программа запущена!!!')
 
     # ****************** ТУТ ВЫПОЛНЯЕТСЯ ПРОГРАММА ****************** #
+
+
+
+
+
 
 
 
