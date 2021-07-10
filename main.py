@@ -10,6 +10,7 @@ from packages.remover import Remover
 
 # ВПИСЫВАЕМ НАЗВАНИЕ ПРОГРАММЫ
 program_name = 'ProgramName v1.0'
+program_author = 'Ахмедов Мурад Алилович'
 
 # ПОЛУЧАЕМ ВСЕ КОНФИГИ
 config_struct = Config('struct').getData()
@@ -53,7 +54,7 @@ if(__name__ == "__main__"):
     print('***')
     print('Название программы: ' + program_name)
     print('Разработка: Министерства труда и социального развития РД')
-    print('Разработчик: Ахмедов Мурад Алилович')
+    print('Разработчик: ' + program_author)
     print('***')
     print('')
     input('Нажмите любую клавишу, для завершения работы программы')
